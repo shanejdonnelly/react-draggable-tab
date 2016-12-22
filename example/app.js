@@ -29,7 +29,8 @@ const tabsStyles = {
   tabTitle: {},
   tabCloseIcon: {},
   tabBefore: {},
-  tabAfter: {}
+  tabAfter: {},
+  tabActive: { fontSize: '11px', flex: '1 1 0%' }
 };
 
 class App extends React.Component {
@@ -42,12 +43,12 @@ class App extends React.Component {
 
     this.state = {
       tabs:[
-        (<Tab key={'tab0'} title={'unclosable tab'} disableClose={true} {...this.makeListeners('tab0')}>
+        (<Tab key={'tab0'} title={'unclosable tab'} link={'http://amazon.com'} disableClose={true} {...this.makeListeners('tab0')}>
           <div>
-            <h1>This tab cannot close</h1>
+            <h3>I hate this shit</h3>
           </div>
         </Tab>),
-        (<Tab key={'tab1'} title={'1stTab'} beforeTitle={icon} {...this.makeListeners('tab1')}>
+        (<Tab key={'tab1'} title={'1stTab'} link={'http://jamgems.net'} beforeTitle={icon} {...this.makeListeners('tab1')}>
           <div>
             <h1>This is tab1</h1>
           </div>
