@@ -3,8 +3,6 @@
 import _ from 'lodash';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {Dialog, FlatButton, Menu, MenuItem, TextField} from 'material-ui';
 import {Tabs, Tab} from '../lib/index.js';
 
 import DynamicTabContent from './DynamicTabContent';
@@ -86,16 +84,6 @@ class App extends React.Component {
       showMenu: false
     };
   }
-
-  getChildContext() {
-    return { muiTheme: getMuiTheme()};
-  }
-
-  // getChildContext() {
-  //   return {
-  //     muiTheme: ThemeManager.getMuiTheme()
-  //   };
-  // }
 
   makeListeners(key){
     return {
@@ -226,20 +214,6 @@ class App extends React.Component {
 
   render() {
 
-    let standardActions = [
-      <FlatButton
-        label="Cancel"
-        secondary={true}
-        onTouchTap={this._onDialogCancel.bind(this)}
-      />,
-      <FlatButton
-        label="Submit"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this._onDialogSubmit.bind(this)}
-      />
-    ];
-
     let menuStyle = {
       display: this.state.showMenu ? 'block': 'none',
       position: 'absolute',
@@ -270,33 +244,9 @@ class App extends React.Component {
           }
           keepSelectedTab={true}
         />
-        <div style={menuStyle}>
-          <Menu>
-            {this.state.contextTarget === 'tab0' ? '' : <MenuItem primaryText="Close" onClick={this.closeFromContextMenu.bind(this)}/>}
-            <MenuItem primaryText="Rename" onClick={this.renameFromContextMenu.bind(this)}/>
-            <MenuItem primaryText="Cancel" onClick={this.cancelContextMenu.bind(this)}/>
-          </Menu>
-        </div>
-        <Dialog
-          title="Change tab name"
-          ref="dialog"
-          actions={standardActions}
-          modal={true}
-          open={this.state.dialogOpen}
-          onShow={this._onDialogShow.bind(this)}>
-          <TextField
-            ref='input' style={{width: '90%'}}/>
-        </Dialog>
-        <p style={{position: 'fixed', 'bottom': '10px'}}>
-          Source code can be found at <a href='https://github.com/georgeOsdDev/react-draggable-tab/tree/master/example'>GitHub</a>
-        </p>
       </div>
     );
   }
 }
-
-App.childContextTypes = {
-  muiTheme: React.PropTypes.object
-};
 
 ReactDOM.render(<App/>, document.getElementById('tabs'));

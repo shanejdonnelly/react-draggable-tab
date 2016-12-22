@@ -53,11 +53,9 @@
     "karma-mocha": "^1.1.1",
     "karma-safari-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.26",
-    "material-ui": "^0.15.4",
     "mocha": "^3.0.2",
     "react-addons-test-utils": "^15.3.0",
     "react-notification-badge": "^1.2.0",
-    "react-tap-event-plugin": "^1.0.0",
     "watchify": "^3.7.0"
   },
   "dependencies": {
